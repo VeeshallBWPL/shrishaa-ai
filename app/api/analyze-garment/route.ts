@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-
 const SYSTEM_PROMPT = `You are a professional fashion analyst and luxury brand creative director.
 
 Given a garment image, you will:
@@ -80,6 +78,8 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
+
+  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
   let imageUrl: string
   try {
